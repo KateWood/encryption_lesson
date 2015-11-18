@@ -11,6 +11,17 @@ function create(req, res) {
 	})
 }
 
+function show(req, res) {
+	User.findById(req.params.id, function(err, user) {
+		if (err) {
+			res.json({err: err})
+		} else {
+			res.json(user)
+		}
+	})
+}
+
 module.exports = {
-	create: create
+	create: create,
+	show: show
 }

@@ -5,4 +5,7 @@ var usersController = require('../controllers/users_controller'),
 apiRouter.route('/users')
 	.post(usersController.create)
 
+apiRouter.route('/users/:id')
+	.get(usersController.show)
+
 module.exports = apiRouter
