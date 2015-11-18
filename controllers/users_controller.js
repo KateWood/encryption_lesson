@@ -18,10 +18,13 @@ function show(req, res) {
 function signIn(req, res) {
 	User.findOne({email: req.body.email}, function(err, user) {
 		if (err) res.json({err: err})
-		if (user.authenticate(req.body.password))
-			res.json({message: 'Welcome, ' + user.name, user: user})
+		if (user)
+			if (user.authenticate(req.body.password))
+				res.json({message: 'Welcome, ' + user.name + '!', user: user})
+			else
+				res.json({message: 'Wrong password :('})
 		else
-			res.json({message: 'Wrong password :('})
+			res.json({message: 'User not found'})
 	})
 }
 
