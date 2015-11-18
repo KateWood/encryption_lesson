@@ -8,4 +8,7 @@ apiRouter.route('/users')
 apiRouter.route('/users/:id')
 	.get(usersController.show)
 
+apiRouter.route('/signin')
+	.post(usersController.signIn)
+
 module.exports = apiRouter
