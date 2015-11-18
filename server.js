@@ -13,3 +13,9 @@ app.use(bodyParser.urlencoded({extended: false}))
 mongoose.connect('mongodb://localhost/encryption_lesson', function() {
 	console.log('Mongodb connected to db:encryption_lesson')
 })
+
+app.use('/api', apiRouter)
+
+app.listen(port, function() {
+	console.log('Server listening on port', port)
+})
